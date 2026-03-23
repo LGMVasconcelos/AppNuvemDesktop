@@ -30,7 +30,7 @@
         {
             cbxGenero = new ComboBox();
             dtpData = new DateTimePicker();
-            maskedTextBox1 = new MaskedTextBox();
+            mskCelular = new MaskedTextBox();
             dgvCliente = new DataGridView();
             label1 = new Label();
             txtId = new TextBox();
@@ -50,6 +50,7 @@
             // cbxGenero
             // 
             cbxGenero.FormattingEnabled = true;
+            cbxGenero.Items.AddRange(new object[] { "Masculino", "Feminino", "Outros" });
             cbxGenero.Location = new Point(231, 180);
             cbxGenero.Name = "cbxGenero";
             cbxGenero.Size = new Size(121, 29);
@@ -62,22 +63,24 @@
             dtpData.Size = new Size(200, 29);
             dtpData.TabIndex = 4;
             // 
-            // maskedTextBox1
+            // mskCelular
             // 
-            maskedTextBox1.Location = new Point(318, 118);
-            maskedTextBox1.Mask = "(99) 00000-0000";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(110, 29);
-            maskedTextBox1.TabIndex = 5;
+            mskCelular.Location = new Point(318, 118);
+            mskCelular.Mask = "(99) 00000-0000";
+            mskCelular.Name = "mskCelular";
+            mskCelular.Size = new Size(110, 29);
+            mskCelular.TabIndex = 5;
             // 
             // dgvCliente
             // 
+            dgvCliente.BackgroundColor = SystemColors.ControlLightLight;
             dgvCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCliente.Location = new Point(12, 234);
             dgvCliente.Name = "dgvCliente";
             dgvCliente.RowTemplate.Height = 25;
             dgvCliente.Size = new Size(540, 174);
             dgvCliente.TabIndex = 6;
+            dgvCliente.CellClick += dgvCliente_CellClick;
             // 
             // label1
             // 
@@ -158,12 +161,13 @@
             btnInserir.FlatAppearance.BorderSize = 0;
             btnInserir.FlatStyle = FlatStyle.Flat;
             btnInserir.ForeColor = SystemColors.ControlLightLight;
-            btnInserir.Location = new Point(569, 31);
+            btnInserir.Location = new Point(569, 39);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(138, 43);
             btnInserir.TabIndex = 19;
             btnInserir.Text = "Inserir";
             btnInserir.UseVisualStyleBackColor = false;
+            btnInserir.Click += btnInserir_Click;
             // 
             // btnAtualizar
             // 
@@ -171,12 +175,13 @@
             btnAtualizar.FlatAppearance.BorderSize = 0;
             btnAtualizar.FlatStyle = FlatStyle.Flat;
             btnAtualizar.ForeColor = SystemColors.ControlLightLight;
-            btnAtualizar.Location = new Point(569, 104);
+            btnAtualizar.Location = new Point(569, 91);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.Size = new Size(138, 43);
             btnAtualizar.TabIndex = 20;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = false;
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // btnSair
             // 
@@ -190,6 +195,7 @@
             btnSair.TabIndex = 22;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = false;
+            btnSair.Click += btnSair_Click;
             // 
             // btnExcluir
             // 
@@ -197,12 +203,13 @@
             btnExcluir.FlatAppearance.BorderSize = 0;
             btnExcluir.FlatStyle = FlatStyle.Flat;
             btnExcluir.ForeColor = SystemColors.ControlLightLight;
-            btnExcluir.Location = new Point(569, 172);
+            btnExcluir.Location = new Point(569, 142);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(138, 43);
             btnExcluir.TabIndex = 21;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = false;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // frmPrincipal
             // 
@@ -222,7 +229,7 @@
             Controls.Add(label1);
             Controls.Add(txtId);
             Controls.Add(dgvCliente);
-            Controls.Add(maskedTextBox1);
+            Controls.Add(mskCelular);
             Controls.Add(dtpData);
             Controls.Add(cbxGenero);
             Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -240,7 +247,7 @@
 
         private ComboBox cbxGenero;
         private DateTimePicker dtpData;
-        private MaskedTextBox maskedTextBox1;
+        private MaskedTextBox mskCelular;
         private DataGridView dgvCliente;
         private Label label1;
         private TextBox txtId;
